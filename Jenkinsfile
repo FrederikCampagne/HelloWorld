@@ -3,21 +3,20 @@ pipeline {
 
 	stages{
 		stage('Build'){
-		    node {
-		        bat './gradlew clean assemble'		        
+		    steps {
+		        bat './gradlew clean assemble'
 		    }
 		}	  
 		stage('Launch'){
-		    node {
-					bat 'java -jar ./build/libs/HelloWorld-0.0.1-SNAPSHOT.jar'
+		    steps {
+					bat 'java -jar ./build/libs/HelloWorld-0.0.1-SNAPSHOT.jar || true'
 		    }
 		
 		}	  
 		stage('Test'){
-		    node {
+		    steps {
 		        bat './gradlew clean test'
 		    }
-		
 		}	    
 	}
 }
