@@ -74,7 +74,7 @@ cargo {
     	
     	containerProperties {
             property 'cargo.tomcat.ajp.port', 9099
-            property 'cargo.tomcat.port', 8090
+            property 'cargo.servlet.port', 8090
         }
     }
         		
