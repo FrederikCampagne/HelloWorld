@@ -7,15 +7,15 @@ pipeline {
 		        bat './gradlew clean assemble'
 		    }
 		}	  
-		stage('Launch'){
+		stage('Deploy'){
 		    steps {
-					bat 'java -jar ./build/libs/HelloWorld-0.0.1-SNAPSHOT.jar || true'
+					bat './gradlew cargoDeployRemote'
 		    }
 		
 		}	  
 		stage('Test'){
 		    steps {
-		        bat './gradlew clean test'
+		        bat './gradlew test'
 		    }
 		}	    
 	}

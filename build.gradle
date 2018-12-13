@@ -4,15 +4,21 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
+		jcenter()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'com.bmuschko:gradle-tomcat-plugin:2.5'
+		classpath 'com.bmuschko:gradle-cargo-plugin:2.4'
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'war' 
+apply plugin: 'com.bmuschko.tomcat' 
+apply plugin: 'com.bmuschko.cargo'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -28,4 +34,42 @@ dependencies {
 	implementation('org.seleniumhq.selenium:selenium-java:3.14.0')
 	
 	testImplementation('org.springframework.boot:spring-boot-starter-test:2.0.5.RELEASE')
+	
+	def tomcatVersion = '9.0.1'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-logging-juli:9.0.0.M6",
+           "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+    
+    def cargoVersion = '1.4.5'
+    cargo "org.codehaus.cargo:cargo-core-uberjar:$cargoVersion",
+          "org.codehaus.cargo:cargo-ant:$cargoVersion"
+}
+
+
+tomcat {
+	httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
+    ajpProtocol  = 'org.apache.coyote.ajp.AjpNio2Protocol'
+  
+    
+    httpPort = 8090
+    httpsPort = 8091
+    enableSSL = true
+    contextPath = 'tainnovationteam'
+}
+
+cargo {
+		containerId = 'tomcat8x'
+            
+           remote {
+        hostname = 'localhost'
+        username = 'admin'
+        password = 'password'
+    }
+        		
+            
+            deployable {
+        		file = file('/build/libs/HelloWorld-0.0.1-SNAPSHOT.war')
+      			context = 'HelloWorld'
+    		}
+            
 }
