@@ -47,7 +47,7 @@ public class DemoApplicationTests {
 	
 	@Test
 	public void test2() throws InterruptedException {
-		driver.get("http://localhost:8080/HelloWorld");
+		driver.get("http://localhost:8090/HelloWorld");
 		Assert.assertEquals("Welcome to HelloWorld!", driver.findElement(By.className("whatup")).getText());
 		 
 	}

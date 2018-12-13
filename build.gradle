@@ -59,11 +59,21 @@ tomcat {
 
 cargo {
 		containerId = 'tomcat8x'
+		
             
-           remote {
+    remote {
         hostname = 'localhost'
         username = 'admin'
         password = 'password'
+    }
+    
+    local {
+    	port = 8090
+    	homeDir = file('D:/apache-tomcat-8.5.35')
+    	
+    	containerProperties {
+            property 'cargo.tomcat.ajp.port', 9099
+        }
     }
         		
             

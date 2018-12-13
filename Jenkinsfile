@@ -7,17 +7,19 @@ pipeline {
 		        bat './gradlew clean assemble'
 		    }
 		}	  
+		
+		stage('Test'){
+		    steps {
+		        bat './gradlew cargoStartLocal test cargoStopLocal'
+		    }
+		}	
+		
 		stage('Deploy'){
 		    steps {
 					bat './gradlew cargoDeployRemote'
 		    }
 		
-		}	  
-		stage('Test'){
-		    steps {
-		        bat './gradlew test'
-		    }
-		}	    
+		}	      
 	}
 }
 
