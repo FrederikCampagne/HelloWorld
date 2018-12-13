@@ -69,11 +69,12 @@ cargo {
     }
     
     local {
-    	port = 8090
+    	
     	homeDir = file('D:/apache-tomcat-8.5.35')
     	
     	containerProperties {
             property 'cargo.tomcat.ajp.port', 9099
+            property 'cargo.tomcat.port', 8090
         }
     }
         		
