@@ -16,7 +16,7 @@ pipeline {
 		
 		stage('Deploy'){
 		    steps {
-					bat './gradlew cargoDeployRemote'
+					bat './gradlew cargoRedeployRemote --info'
 		    }
 		
 		}	      

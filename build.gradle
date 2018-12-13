@@ -62,6 +62,7 @@ cargo {
 		
             
     remote {
+    	port = 8080
         hostname = 'localhost'
         username = 'admin'
         password = 'password'
