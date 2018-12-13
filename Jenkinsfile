@@ -8,9 +8,15 @@ pipeline {
 		    }
 		}	  
 		
-		stage('Test'){
+		stage('Unit Tests'){
 		    steps {
-		        bat './gradlew cargoStartLocal test cargoStopLocal'
+		        bat './gradlew test'
+		    }
+		}
+		
+		stage('E2E & integration Tests'){
+		    steps {
+		        bat './gradlew cargoStartLocal inteTest cargoStopLocal'
 		    }
 		}	
 		
