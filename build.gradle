@@ -82,11 +82,17 @@ cargo {
     
     local {
     	
-    	homeDir = file('D:/apache-tomcat-8.5.35')
+    	homeDir = file('$buildDir/extract')
     	
     	containerProperties {
             property 'cargo.tomcat.ajp.port', 9099
             property 'cargo.servlet.port', 8090
+        }
+        
+        installer {
+            installUrl = 'http://mirror.vorboss.net/apache/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35-windows-x64.zip'
+            downloadDir = file('$buildDir/download')
+            extractDir = file('$buildDir/extract')
         }
     }
         		
