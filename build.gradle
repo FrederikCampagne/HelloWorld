@@ -30,7 +30,7 @@ repositories {
 
 sourceSets {
     inteTest {
-        java.srcDir 'src/inte/java'
+        java.srcDir 'src/intetest/java'
     }
 }
 
