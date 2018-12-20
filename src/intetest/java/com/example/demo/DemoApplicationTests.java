@@ -22,7 +22,7 @@ public class DemoApplicationTests {
 	   @BeforeClass
 	   public static void createAndStartService() throws IOException {
 	     service = new ChromeDriverService.Builder()
-	         .usingDriverExecutable(new File("chromedriver/chromedriver.sh"))
+	         .usingDriverExecutable(new File("chromedriver/chromedriver"))
 	         .usingAnyFreePort()
 	         .build();
 	     service.start();
