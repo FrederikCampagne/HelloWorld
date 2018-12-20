@@ -98,7 +98,7 @@ cargo {
         		
             
             deployable {
-        		file = file('/build/libs/HelloWorld-0.0.1-SNAPSHOT.war')
+        		file = file('./build/libs/HelloWorld-0.0.1-SNAPSHOT.war')
       			context = 'HelloWorld'
     		}
             
