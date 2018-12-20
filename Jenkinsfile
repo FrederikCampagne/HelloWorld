@@ -4,25 +4,25 @@ pipeline {
 	stages{
 		stage('Build'){
 		    steps {
-		        bat './gradlew clean assemble'
+		        sh './gradlew clean assemble'
 		    }
 		}	  
 		
 		stage('Unit Tests'){
 		    steps {
-		        bat './gradlew test'
+		        sh './gradlew test'
 		    }
 		}
 		
 		stage('E2E & integration Tests'){
 		    steps {
-		        bat './gradlew cargoStartLocal inteTest cargoStopLocal'
+		        sh './gradlew cargoStartLocal inteTest cargoStopLocal'
 		    }
 		}	
 		
 		stage('Deploy'){
 		    steps {
-					bat './gradlew cargoRedeployRemote'
+					sh './gradlew cargoRedeployRemote'
 		    }
 		
 		}	      
