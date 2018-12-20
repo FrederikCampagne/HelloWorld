@@ -17,6 +17,8 @@ pipeline {
 		
 		stage('E2E & integration Tests'){
 		    steps {
+		       	sh 'nohup sudo Xvfb :10 -ac'
+				sh 'export DISPLAY=:10'
 		        sh './gradlew cargoStartLocal inteTest cargoStopLocal'
 		    }
 		}	
