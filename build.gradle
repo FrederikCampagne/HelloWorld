@@ -38,7 +38,7 @@ sourceSets {
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE')
 	testImplementation('org.seleniumhq.selenium:selenium-java:3.14.0')
-	
+	testImplementation 'io.github.bonigarcia:webdrivermanager:3.0.0'
 	testImplementation('org.springframework.boot:spring-boot-starter-test:2.0.5.RELEASE')
 	
 	def tomcatVersion = '9.0.1'
@@ -51,7 +51,7 @@ dependencies {
           "org.codehaus.cargo:cargo-ant:$cargoVersion"
           
     inteTestImplementation('org.seleniumhq.selenium:selenium-java:3.14.0')
-
+	
     inteTestImplementation('org.springframework.boot:spring-boot-starter-test:2.0.5.RELEASE') 
 
  
