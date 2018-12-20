@@ -17,6 +17,7 @@ pipeline {
 		
 		stage('E2E & integration Tests'){
 		    steps {
+		    	sh 'chmod +x ./chromedriver/chromedriver.sh'
 		        sh './gradlew cargoStartLocal inteTest cargoStopLocal'
 		    }
 		}	
