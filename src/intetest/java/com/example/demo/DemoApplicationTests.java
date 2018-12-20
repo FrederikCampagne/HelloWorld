@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -19,7 +20,9 @@ public class DemoApplicationTests {
 	   @BeforeClass
 	   public static void createAndStartService() throws IOException {
 	     WebDriverManager.chromedriver().setup();
-	     driver = new ChromeDriver();
+	     ChromeOptions options = new ChromeOptions();
+	     options.setHeadless(true);
+	     driver = new ChromeDriver(options);
 	   }
 
 	   @After
