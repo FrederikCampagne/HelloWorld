@@ -51,7 +51,7 @@ dependencies {
           "org.codehaus.cargo:cargo-ant:$cargoVersion"
           
     inteTestImplementation('org.seleniumhq.selenium:selenium-java:3.14.0')
-	
+	inteTestImplementation 'io.github.bonigarcia:webdrivermanager:3.0.0'
     inteTestImplementation('org.springframework.boot:spring-boot-starter-test:2.0.5.RELEASE') 
 
  
