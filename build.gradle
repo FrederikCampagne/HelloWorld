@@ -29,8 +29,10 @@ repositories {
 }
 
 sourceSets {
-    inteTest {
-        java.srcDir 'src/intetest/java'
+    intetest {
+    	java {
+        	srcDirs 'src/intetest/java'
+        	}
     }
 }
 
@@ -50,9 +52,9 @@ dependencies {
     cargo "org.codehaus.cargo:cargo-core-uberjar:$cargoVersion",
           "org.codehaus.cargo:cargo-ant:$cargoVersion"
           
-    inteTestImplementation('org.seleniumhq.selenium:selenium-java:3.14.0')
-	inteTestImplementation 'io.github.bonigarcia:webdrivermanager:3.0.0'
-    inteTestImplementation('org.springframework.boot:spring-boot-starter-test:2.0.5.RELEASE') 
+    intetestImplementation('org.seleniumhq.selenium:selenium-java:3.14.0')
+	intetestImplementation 'io.github.bonigarcia:webdrivermanager:3.0.0'
+    intetestImplementation('org.springframework.boot:spring-boot-starter-test:2.0.5.RELEASE') 
 
  
 }
@@ -106,14 +108,14 @@ cargo {
 
 
 
-task inteTest(type: Test) {
+task intetest(type: Test) {
     group = LifecycleBasePlugin.VERIFICATION_GROUP
     description = 'Runs the integration tests.' 
 
     maxHeapSize = '1024m' 
 
-    testClassesDir = sourceSets.inteTest.output.classesDir
-    classpath = sourceSets.inteTest.runtimeClasspath 
+    testClassesDir = sourceSets.intetest.output.classesDir
+    classpath = sourceSets.intetest.runtimeClasspath 
 
     binResultsDir = file("$buildDir/integration-test-results/binary/inteTest")
 
