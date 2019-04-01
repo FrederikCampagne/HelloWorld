@@ -40,7 +40,7 @@ public class DemoApplicationTests {
 	@Test
 	public void test2() throws InterruptedException {
 	    // fake commit
-		driver.get("http://localhost:8090/tainnovationteam/");
+		driver.get("http://localhost:9091/tainnovationteam/");
 		Assert.assertEquals("Welcome to HelloWorld!", driver.findElement(By.className("whatup")).getText());
 		 
 	}

@@ -26,22 +26,55 @@ sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+	jcenter()
 }
 
 sourceSets {
-    intetest {
+    inteTest {
     	java {
-        	srcDirs 'src/intetest/java'
-        	}
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/intetest/java')
+        }
+        resources.srcDir file('src/intetest/resources')
     }
+}
+
+
+eclipse {
+   classpath {
+        containers 'org.eclipse.buildship.core.gradleclasspathcontainer'
+   }
+}
+
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+}
+
+task inteTest(type: Test) {
+    group = LifecycleBasePlugin.VERIFICATION_GROUP
+    description = 'Runs the integration tests.' 
+
+    maxHeapSize = '1024m' 
+
+    testClassesDir = sourceSets.inteTest.output.classesDir
+    classpath = sourceSets.inteTest.runtimeClasspath 
+
+    binResultsDir = file("$buildDir/integration-test-results/binary/intetest")
+
+    reports { 
+        html.destination = "$buildDir/reports/integration-test"
+        junitXml.destination = "$buildDir/integration-test-results"
+    } 
 }
 
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE')
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.0.5.RELEASE'
+	testImplementation 'io.github.bonigarcia:webdrivermanager:3.2.0'
 	testImplementation('org.seleniumhq.selenium:selenium-java:3.14.0')
-	testImplementation 'io.github.bonigarcia:webdrivermanager:3.0.0'
-	testImplementation('org.springframework.boot:spring-boot-starter-test:2.0.5.RELEASE')
 	
 	def tomcatVersion = '9.0.1'
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
@@ -52,9 +85,9 @@ dependencies {
     cargo "org.codehaus.cargo:cargo-core-uberjar:$cargoVersion",
           "org.codehaus.cargo:cargo-ant:$cargoVersion"
           
-    intetestImplementation('org.seleniumhq.selenium:selenium-java:3.14.0')
-	intetestImplementation 'io.github.bonigarcia:webdrivermanager:3.0.0'
-    intetestImplementation('org.springframework.boot:spring-boot-starter-test:2.0.5.RELEASE') 
+    inteTestImplementation('org.seleniumhq.selenium:selenium-java:3.14.0')
+	inteTestImplementation 'io.github.bonigarcia:webdrivermanager:3.2.0'
+    inteTestImplementation('org.springframework.boot:spring-boot-starter-test:2.0.5.RELEASE') 
 
  
 }
@@ -108,21 +141,5 @@ cargo {
 
 
 
-task intetest(type: Test) {
-    group = LifecycleBasePlugin.VERIFICATION_GROUP
-    description = 'Runs the integration tests.' 
-
-    maxHeapSize = '1024m' 
-
-    testClassesDir = sourceSets.intetest.output.classesDir
-    classpath = sourceSets.intetest.runtimeClasspath 
-
-    binResultsDir = file("$buildDir/integration-test-results/binary/inteTest")
-
-    reports { 
-        html.destination = "$buildDir/reports/integration-test"
-        junitXml.destination = "$buildDir/integration-test-results"
-    } 
-}
 
 
