@@ -1,7 +1,7 @@
 pipeline {
 	agent {
 		docker {
-			image 'light/lightweight'
+			image 'light:lightweight'
 		}
 	}
 			
