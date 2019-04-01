@@ -1,10 +1,6 @@
 pipeline {
 	agent {
-		docker.image('light:lightweight').withRun('-p 9091:9091'){ c ->
-		    sh '${c}'
-		    }
-
-		
+		docker.image('light:lightweight').run('-p 9091:9091')		
 	}
 			
 	stages {
