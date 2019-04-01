@@ -2,7 +2,7 @@ pipeline {
 	agent {
 	    
 	     docker {
-	     	image 'light:lightweight'
+	     	image 'frederikcampagne/tainnovationteam'
 	     	args '-p 9091:9091'
 	     }
 	}
