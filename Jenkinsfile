@@ -3,7 +3,7 @@ pipeline {
 	    
 	     docker {
 	     	image 'light:lightweight'
-	     	args 'docker run -p 9091:9091'
+	     	args '-p 9091:9091'
 	     }
 	}
 
