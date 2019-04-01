@@ -3,10 +3,8 @@ pipeline {
 			
 	stages {
 		stage('Start Application'){
-		    steps{
-		        
-		    docker.image('light:lightweight').run('-p 9091:9091')	
-		        
+		    steps{    
+	            docker.image('light:lightweight').run('-p 9091:9091')	
 		    }
 
 		}
