@@ -1,12 +1,6 @@
 pipeline {
 	agent {
-     
-		node {
-		
-		  docker.image('light:lightweight').run('-p 9091:9091')
-		
-		}
-	    
+		  docker.image('light:lightweight').run('-p 9091:9091')   
      
 	}
 		
