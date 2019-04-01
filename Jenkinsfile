@@ -5,10 +5,12 @@ pipeline {
 		}
 	}
 			
-	stage('E2E & integration Tests'){
-		    steps {
-		        sh './gradlew inteTest'
-		    }
-	}		      
+	stages {
+		stage('E2E & integration Tests'){
+			    steps {
+			        sh './gradlew inteTest'
+		    	}
+		}		      
+	}
 }
 
