@@ -2,19 +2,15 @@ pipeline {
 	agent any
 	
 	environment{
-		def containerId	= ''    
+	sh 'docker run -d -p 9091:9091 light:lightweight > result'   
+				def output=readFile('result').trim()
+				  
+		def containerId	= ''
+		containerId = output    
 	}
 
 			
 	stages {
-		stage('Start container' ) {
-		    steps {
-				sh 'docker run -d -p 9091:9091 light:lightweight > result'   
-				def output=readFile('result').trim()
-				containerId = output                                                 
-		    }
-                        
-		}
 
 		stage('E2E & integration Tests'){
 			    steps {   
