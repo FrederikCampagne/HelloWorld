@@ -13,7 +13,7 @@ pipeline {
 			
 		    steps{
 		    	script {
-		    	     containerId = sh(script: 'docker run -d -p 9091:9091 light:lightweight', returnStdout: true)
+		    	     containerId = sh(script: 'docker run --net=host -d -p 9091:9091 light:lightweight', returnStdout: true)
 		    	}
 
 		        echo "joehoe ${containerId}"

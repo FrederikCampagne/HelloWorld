@@ -18,7 +18,7 @@ public class DemoApplicationTests {
 
 	   @BeforeClass
 	   public static void createAndStartService() throws IOException {
-		   driver = new RemoteWebDriver(new URL("http://dockervm:4444/wd/hub"),
+		   driver = new RemoteWebDriver(new URL("http://192.168.99.100:4444/wd/hub"),
 			         DesiredCapabilities.chrome());
 	   }
 
