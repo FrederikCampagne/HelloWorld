@@ -16,7 +16,7 @@ pipeline {
 		    	     containerId = sh(script: 'docker run -d -p 9091:9091 light:lightweight', returnStdout: true)
 		    	}
 
-		        echo 'joehoe'
+		        echo "joehoe ${containerId}"
 		    }
 
 		}
