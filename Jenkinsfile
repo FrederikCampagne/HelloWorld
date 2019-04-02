@@ -1,11 +1,18 @@
 pipeline {
 	agent any
 	
-	containerId = sh(script: 'docker run -d -p 9091:9091 light:lightweight', returnStdout: true)
+	
 
 
 			
 	stages {
+		
+		stage('nothing'){
+		    steps{
+		        containerId = sh(script: 'docker run -d -p 9091:9091 light:lightweight', returnStdout: true)
+		    }
+
+		}
 
 		stage('E2E & integration Tests'){
 			    steps {   
