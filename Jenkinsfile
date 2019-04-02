@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 
-	def containerId	
+	def containerId	= ''
 			
 	stages {
 		stage('Start container' ) {
