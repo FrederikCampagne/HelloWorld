@@ -2,15 +2,19 @@ pipeline {
 	agent any
 	
 	
-
+	def containerId = ''
 
 			
 	stages {
 		
 		stage('nothing'){
-			containerId = sh(script: 'docker run -d -p 9091:9091 light:lightweight', returnStdout: true)
+			
 		    steps{
-		        
+		    	script {
+		    	     containerId = sh(script: 'docker run -d -p 9091:9091 light:lightweight', returnStdout: true)
+		    	}
+
+		        echo 'joehoe'
 		    }
 
 		}
