@@ -1,13 +1,8 @@
 pipeline {
 	agent any
 	
-	environment{
-	sh 'docker run -d -p 9091:9091 light:lightweight > result'   
-				def output=readFile('result').trim()
-				  
-		def containerId	= ''
-		containerId = output    
-	}
+	containerId = sh(script: 'docker run -d -p 9091:9091 light:lightweight', returnStdout: true)
+
 
 			
 	stages {
