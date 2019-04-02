@@ -1,7 +1,10 @@
 pipeline {
 	agent any
+	
+	environment{
+		def containerId	= ''    
+	}
 
-	def containerId	= ''
 			
 	stages {
 		stage('Start container' ) {
