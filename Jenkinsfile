@@ -5,8 +5,10 @@ pipeline {
 			
 	stages {
 		stage('Start container' ) {
-		                            
-			sh 'docker run -p 9091:9091 light:lightweight'                             
+		    steps {
+				sh 'docker run -p 9091:9091 light:lightweight'                                                    
+		    }
+                        
 		}
 
 		stage('E2E & integration Tests'){
