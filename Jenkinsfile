@@ -8,8 +8,9 @@ pipeline {
 	stages {
 		
 		stage('nothing'){
+			containerId = sh(script: 'docker run -d -p 9091:9091 light:lightweight', returnStdout: true)
 		    steps{
-		        containerId = sh(script: 'docker run -d -p 9091:9091 light:lightweight', returnStdout: true)
+		        
 		    }
 
 		}
