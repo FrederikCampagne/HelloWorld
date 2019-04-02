@@ -9,7 +9,9 @@ pipeline {
 	stages {
 		stage('Start container' ) {
 		    steps {
-				containerId = sh (returnStdout: true, script: 'docker run -d -p 9091:9091 light:lightweight').trim()                                                    
+				sh 'docker run -d -p 9091:9091 light:lightweight > result'   
+				def output=readFile('result').trim()
+				containerId = output                                                 
 		    }
                         
 		}
