@@ -1,8 +1,10 @@
 pipeline {
 	agent any
 	
-	
-	def containerId = ''
+	environment{    
+		def containerId = ''
+	}
+
 
 			
 	stages {
