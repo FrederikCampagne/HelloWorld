@@ -9,7 +9,7 @@ pipeline {
 	stages {
 		stage('Start container' ) {
 		    steps {
-				containerId = sh (returnStdout: true, script: 'docker run -d -p 9091:9091 light:lightweight')                                                    
+				containerId = sh (returnStdout: true, script: 'docker run -d -p 9091:9091 light:lightweight').trim()                                                    
 		    }
                         
 		}
