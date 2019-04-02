@@ -1,15 +1,13 @@
 pipeline {
-	agent {
-	    
-	     docker {
-	     	image 'frederikcampagne/tainnovationteam'
-	     	args '-p 9091:9091'
-	     }
-	}
+	agent any
 
 		
 			
 	stages {
+		stage('Start container' ) {
+		                            
+			sh 'docker run -p 9091:9091 light:lightweight'                             
+		}
 
 		stage('E2E & integration Tests'){
 			    steps {   
